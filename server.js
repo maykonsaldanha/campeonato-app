@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit')
 
 const campeonatosRoutes = require('./routes/campeonatos')
 const timesRoutes = require('./routes/times')
+const jogosRoutes = require('./routes/jogos')
 
 
 const app = express()
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/campeonatos', campeonatosRoutes)
 app.use('/api/times', timesRoutes)
+app.use('/api/jogos', jogosRoutes)
 
 
 app.get('/health', (req, res) => {
