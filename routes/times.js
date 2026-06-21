@@ -71,6 +71,15 @@ router.delete('/:id', (req, res) => {
     const time = db.prepare('SELECT * FROM times WHERE id = ?').get(req.params.id)
     if (!time) return res.status(404).json({ erro: 'Time não encontrado' })
 
+    const jogosRelacionados = db.prepare(`
+      SELECT id FROM jogos 
+      WHERE time_casa_id = ? OR time_fora_id = ?
+        `).all(req.params.id, req.params.id)
+
+    if (jogosRelacionados.length > 0){
+      return res.status(400).json({ erro: 'O time está relacionado a um jogo, não é permitido remover.'})
+    } 
+
     db.prepare('DELETE FROM times WHERE id = ?').run(req.params.id)
     res.json({ mensagem: 'Time removido com sucesso' })
   } catch (error) {

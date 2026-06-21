@@ -67,11 +67,19 @@ router.delete('/:id', (req, res) => {
     try {
         const campeonato = db.prepare('SELECT * FROM campeonatos WHERE id = ?').get(req.params.id)
         if(!campeonato) return res.status(404).json({erro: 'Campeonato não encontrado'})
+
+        const campeonatoRelacionado = db.prepare(`
+            SELECT id FROM jogos WHERE campeonato_id = ?
+            `).all(req.params.id) //retorno de .all() sempre é um array
+
+        if (campeonatoRelacionado.length > 0){
+            return res.status(400).json({ erro: 'Campeonato relacionado a um jogo, não é possível remover.'})
+        } 
         
         db.prepare('DELETE FROM campeonatos WHERE id = ?').run(req.params.id)
         res.json({mensagem: "Campeonato removido com sucesso"})
     } catch (error) {
-        res.status(500).json({erro: 'Erro remover campeonato'})
+        res.status(500).json({erro: 'Erro ao remover campeonato'})
     }
 })
 
