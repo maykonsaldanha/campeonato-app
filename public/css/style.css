@@ -1,0 +1,227 @@
+:root {
+  --cor-fundo: #0d0d0d;
+  --cor-superficie: #1a1a1a;
+  --cor-superficie-hover: #242424;
+  --cor-borda: #2e2e2e;
+  --cor-texto: #f2f2f2;
+  --cor-texto-secundario: #a3a3a3;
+  --cor-verde: #2ecc71;
+  --cor-verde-escuro: #25a85c;
+  --cor-erro: #e74c3c;
+  --fonte: 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  line-height: 1.6;
+}
+
+header {
+  background-color: var(--cor-superficie);
+  border-bottom: 2px solid var(--cor-verde);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+header h1 span {
+  color: var(--cor-verde);
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.toolbar h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--cor-texto-secundario);
+}
+
+button {
+  background-color: var(--cor-verde);
+  color: #0d0d0d;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--cor-verde-escuro);
+}
+
+button.secundario {
+  background-color: transparent;
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+}
+
+button.secundario:hover {
+  background-color: var(--cor-superficie-hover);
+}
+
+.lista-campeonatos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-campeonato {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.card-campeonato:hover {
+  border-color: var(--cor-verde);
+}
+
+.card-campeonato .info h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.card-campeonato .info .meta {
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-ativo {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: var(--cor-verde);
+}
+
+.badge-encerrado {
+  background-color: rgba(163, 163, 163, 0.15);
+  color: var(--cor-texto-secundario);
+}
+
+.badge-modalidade {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: var(--cor-verde);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.estado-vazio {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--cor-texto-secundario);
+}
+
+.estado-erro {
+  background-color: rgba(231, 76, 60, 0.1);
+  border: 1px solid var(--cor-erro);
+  color: var(--cor-erro);
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-overlay.aberto {
+  display: flex;
+}
+
+.modal {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.modal h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.campo {
+  margin-bottom: 16px;
+}
+
+.campo label {
+  display: block;
+  font-size: 13px;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 6px;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--cor-verde);
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}

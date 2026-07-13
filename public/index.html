@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatchHub</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Match<span>Hub</span></h1>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <h2>Campeonatos</h2>
+      <button id="btn-novo">+ Novo Campeonato</button>
+    </div>
+
+    <div id="erro" class="estado-erro" style="display: none;"></div>
+
+    <div id="lista" class="lista-campeonatos"></div>
+
+    <div id="vazio" class="estado-vazio" style="display: none;">
+      <p>Nenhum campeonato cadastrado ainda.</p>
+      <p>Clique em <strong>+ Novo Campeonato</strong> para começar.</p>
+    </div>
+  </main>
+
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <h3 id="modal-titulo">Novo Campeonato</h3>
+
+      <div class="campo">
+        <label for="input-nome">Nome</label>
+        <input type="text" id="input-nome" placeholder="Ex: Copa Cuiabá 2025">
+      </div>
+
+      <div class="campo">
+        <label for="input-modalidade">Modalidade</label>
+        <select id="input-modalidade">
+          <option value="fut7">Fut7</option>
+          <option value="futsal">Futsal</option>
+        </select>
+      </div>
+
+      <div class="modal-acoes">
+        <button class="secundario" id="btn-cancelar">Cancelar</button>
+        <button id="btn-salvar">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/campeonatos.js"></script>
+</body>
+</html>
